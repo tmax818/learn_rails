@@ -1,24 +1,37 @@
-# README
+# Learn Ruby and Rails
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is my first attempt at a Ruby/Rails tutorial. I will borrow from ... This is a record of how I got here.
 
-Things you may want to cover:
+```Bash
+[~]$ rails new learn_rails -d postgresql
+[~]$ cd learn_rails/
 
-* Ruby version
+```
 
-* System dependencies
+Then I generated a new controller for my static pages like so:
 
-* Configuration
+```Bash
+[learn_rails (master)]$ rails g controller StaticPages home help about
+```
 
-* Database creation
+This creates all kinds of crap as you can see in the terminal. To get rid of the smoke signal and create my own I need to change:
 
-* Database initialization
+```Ruby
+Rails.application.routes.draw do
+  get 'static_pages/home'
+  get 'static_pages/help'
+  get 'static_pages/about'
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+end
+```
 
-* How to run the test suite
+to this
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```Ruby
+Rails.application.routes.draw do
+  root 'static_pages#home'
+  get 'static_pages/help'
+  get 'static_pages/about'
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+end
+```
