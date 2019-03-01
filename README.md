@@ -56,3 +56,23 @@ remote.heroku.fetch=+refs/heads/*:refs/remotes/heroku/*
 [learn_rails (master)]$ git push heroku master
 
 ```
+
+I am going to follow the Getting Started Guide for the sake of simplicity. Articles will be the resource used for examples.
+
+Starting [here](https://guides.rubyonrails.org/getting_started.html#getting-up-and-running)
+
+Modify routes.rb as follows:
+
+```Ruby
+Rails.application.routes.draw do
+  root 'static_pages#home'
+  get 'static_pages/help'
+  get 'static_pages/about'
+
+  resources :articles
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+end
+
+```
+
+run `$ rails routes` to see all the CRUD routes generated. Then generate the controller `$ rails g controller Articles` I can't believe how hard it was to get erb to render and text in an erb file!
